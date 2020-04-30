@@ -65,6 +65,7 @@ func MarshalToJsonPathWrapper(expression string) OutputFormater {
 	// aka MarshalToJsonPath
 	return func(input interface{}) ([]byte, error) {
 		jp := jsonpath.New("json-path")
+		jp.EnableJSONOutput(true)
 
 		if err := jp.Parse(expr); err != nil {
 			return nil, fmt.Errorf("Failed to parse jsonpath expression: %v", err)
